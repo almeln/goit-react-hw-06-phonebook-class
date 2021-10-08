@@ -1,0 +1,25 @@
+.form {
+  border: 1px solid black;
+  padding: 20px;
+  display: block;
+}
+
+.formInput {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.formInputLabel {
+  color: black;
+  font-weight: 500;
+}
+
+.formInputBtn {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.formInputBtn:hover {
+  background-color: violet;
+}

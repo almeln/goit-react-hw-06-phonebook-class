@@ -1,0 +1,17 @@
+.contactItemName {
+  margin-right: 5px;
+}
+
+.contactItemNumber {
+  margin-right: 15px;
+}
+
+.deleteBtn {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.deleteBtn:hover {
+  background-color: violet;
+}
