@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import toast from 'react-hot-toast';
+
+import { addContact } from 'redux/contacts/contacts-actions';
+
 import css from './ContactForm.module.css';
 
 class ContactForm extends Component {
@@ -20,9 +25,17 @@ class ContactForm extends Component {
 
   handleSubmit = event => {
     const { state } = this;
-
     event.preventDefault();
-    console.log(state);
+
+    const doubleContact = this.props.contacts.find(
+      contact => contact.name.toLowerCase() === state.name.toLowerCase(),
+    );
+
+    if (doubleContact) {
+      toast.error(`${state.name} is alredy in contacts.`);
+      return;
+    }
+
     this.props.onSubmit(state);
     this.reset();
   };
@@ -73,4 +86,12 @@ class ContactForm extends Component {
   }
 }
 
-export default ContactForm;
+const mapStateToProps = state => ({
+  contacts: state.contacts.items,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: data => dispatch(addContact(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
